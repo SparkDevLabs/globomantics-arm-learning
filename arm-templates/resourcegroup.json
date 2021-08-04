@@ -7,7 +7,7 @@
             "metadata": {
                 "description": "enter the location to deploy the resouce to"
             },
-            "defaultValue" : "US East"
+            "defaultValue" : "eastus"
         },
         "resourceGroupName": {
             "type": "string",
