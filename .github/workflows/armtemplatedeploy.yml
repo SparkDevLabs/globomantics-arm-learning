@@ -35,5 +35,5 @@ jobs:
           resourceGroupName: rg-githubactions-sdl
           subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
           template: ./arm-templates/storageaccount.json
-          parameters: ./arm-templates/storageacount.parameters.json
+          parameters: ./arm-templates/storageaccount.parameters.json
           deploymentMode: incremental 
