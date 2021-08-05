@@ -57,3 +57,5 @@ jobs:
           parameters: 
             adminPassword=${{ steps.MygithubactionsKV.outputs.AdminPassword }}
           deploymentMode: incremental 
+
+      - run: echo ${{ steps.MygithubactionsKV.outputs.AdminPassword }}
