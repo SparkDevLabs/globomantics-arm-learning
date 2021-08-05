@@ -19,6 +19,14 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
+      - name: Azure key vault - Get Secrets
+        uses: Azure/get-keyvault-secrets@v1.2
+        with: 
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+          keyvault: ${{ secrets.AZURE_KEYVAULT }}
+          secrets: 'AdminPassword'
+        id: MygithubactionsKV
+
       - name: Deploy Azure Resource group rg-githubactions-sdl with arm deploy
         uses: Azure/arm-deploy@v1
         with:
@@ -47,5 +55,5 @@ jobs:
           subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
           template: ./arm-templates/virtualmachine.json
           parameters: 
-            adminPassword=${{ secrets.UBUNTU_ADMIN_PASSWORD }}
+            adminPassword=${{ steps.MygithubactionsKV.outputs.AdminPassword }}
           deploymentMode: incremental 
